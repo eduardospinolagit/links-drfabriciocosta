@@ -1,0 +1,289 @@
+/* =========================================================
+   Dr. Fabrício Costa — Links Page | Sano Lab
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Noto+Sans:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red:      #C41230;
+  --red-dark: #9B0E26;
+  --white:    #FFFFFF;
+  --dark:     #111111;
+  --gray:     #888888;
+  --ff-head:  'Figtree', sans-serif;
+  --ff-body:  'Noto Sans', sans-serif;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--ff-body);
+  background: #0d0d0d;
+  color: var(--white);
+  min-height: 100dvh;
+}
+
+/* ── Wrapper ── */
+
+.lp {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* ── Header / Perfil ── */
+
+.lp-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.lp-avatar-wrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 3px solid var(--red);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.lp-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.lp-name {
+  font-family: var(--ff-head);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 4px;
+}
+
+.lp-bio {
+  font-size: .8125rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* ── Redes sociais ── */
+
+.lp-socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.lp-social {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.lp-social:hover,
+.lp-social:focus-visible {
+  transform: scale(1.12);
+  opacity: .85;
+}
+
+.lp-social:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+.lp-social--wa { background: #1a3a27; color: #25D366; }
+.lp-social--ig { background: #3a1a28; color: #e1306c; }
+.lp-social--fb { background: #1a2640; color: #4267B2; }
+
+/* ── Cards ── */
+
+.lp-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lp-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 20px;
+  min-height: 280px;
+  text-decoration: none;
+  color: var(--white);
+  background: #1a1a1a;
+  cursor: pointer;
+}
+
+/* overlay gradiente sobre a foto */
+.lp-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, .92) 0%,
+    rgba(0, 0, 0, .45) 40%,
+    rgba(0, 0, 0, .08) 100%
+  );
+  z-index: 1;
+  transition: background .35s ease;
+}
+
+.lp-card:hover::before {
+  background: linear-gradient(
+    to top,
+    rgba(196, 18, 48, .82) 0%,
+    rgba(0, 0, 0, .45) 45%,
+    rgba(0, 0, 0, .10) 100%
+  );
+}
+
+.lp-card:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
+
+/* foto de fundo */
+.lp-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform .5s ease;
+}
+
+.lp-card__img--top {
+  object-position: center 10%;
+}
+
+.lp-card:hover .lp-card__img {
+  transform: scale(1.05);
+}
+
+/* conteúdo do card */
+.lp-card__body {
+  position: relative;
+  z-index: 2;
+  padding: 24px;
+  height: 100%;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.lp-card__badge {
+  display: inline-block;
+  font-family: var(--ff-head);
+  font-size: .6875rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--white);
+  background: var(--red);
+  padding: 4px 10px;
+  border-radius: 6px;
+  align-self: flex-start;
+  margin-bottom: 4px;
+}
+
+.lp-card__title {
+  font-family: var(--ff-head);
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.lp-card__sub {
+  font-size: .8125rem;
+  color: rgba(255, 255, 255, .7);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+.lp-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ff-head);
+  font-size: .8125rem;
+  font-weight: 700;
+  color: var(--white);
+  background: rgba(255, 255, 255, .15);
+  border: 1px solid rgba(255, 255, 255, .25);
+  padding: 8px 14px;
+  border-radius: 100px;
+  margin-top: 10px;
+  align-self: flex-start;
+  transition: background .2s ease, border-color .2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.lp-card:hover .lp-card__cta {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+/* ── Rodapé ── */
+
+.lp-footer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lp-footer p {
+  font-size: .75rem;
+  color: #444;
+}
+
+.lp-footer a {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lp-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsivo ── */
+
+@media (min-width: 480px) {
+  .lp-card__body { padding: 28px 28px; }
+  .lp-card { min-height: 300px; }
+  .lp-card__body { min-height: 300px; }
+}
+
+@media (min-width: 768px) {
+  .lp { padding: 64px 24px 80px; }
+  .lp-card { min-height: 340px; }
+  .lp-card__body { min-height: 340px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-card__img,
+  .lp-card::before,
+  .lp-card__cta,
+  .lp-social { transition: none; }
+}

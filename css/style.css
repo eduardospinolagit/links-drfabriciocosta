@@ -115,16 +115,22 @@ body {
 
 .lp-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 14px;
 }
+
+@media (min-width: 768px) {
+  .lp-cards { grid-template-columns: 1fr 1fr; }
+  .lp-card  { aspect-ratio: 3/4; }
+}
+
 
 .lp-card {
   position: relative;
   display: block;
   overflow: hidden;
   border-radius: 20px;
-  aspect-ratio: 4/5;
+  aspect-ratio: 1/1;
   text-decoration: none;
   color: var(--white);
   background: #1a1a1a;

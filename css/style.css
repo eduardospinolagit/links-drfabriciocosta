@@ -119,12 +119,6 @@ body {
   gap: 14px;
 }
 
-@media (min-width: 768px) {
-  .lp-cards { grid-template-columns: 1fr 1fr; }
-  .lp-card  { aspect-ratio: 9/16; }
-}
-
-
 .lp-card {
   position: relative;
   display: block;
@@ -137,10 +131,15 @@ body {
   cursor: pointer;
 }
 
+@media (min-width: 768px) {
+  .lp-cards { grid-template-columns: 1fr 1fr; }
+  .lp-card  { aspect-ratio: 3/4; }
+}
+
 /* card dourado — evento ao vivo */
 .lp-card--gold {
   border: 2px solid #C9A84C;
-  box-shadow: 0 0 28px rgba(201, 168, 76, .35), 0 6px 24px rgba(0,0,0,.5);
+  box-shadow: 0 6px 24px rgba(0,0,0,.5);
 }
 
 .lp-card--gold .lp-card__badge {
@@ -196,8 +195,28 @@ body {
   object-position: center 55%;
 }
 
+.lp-card__img--zoom {
+  transform: scale(1);
+  transform-origin: center 55%;
+  object-position: center 55%;
+}
+
+@media (min-width: 768px) {
+  .lp-card__img--zoom {
+    transform: scale(1.1);
+    transform-origin: right bottom;
+    object-position: right bottom;
+  }
+}
+
 .lp-card:hover .lp-card__img {
   transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .lp-card:hover .lp-card__img--zoom {
+    transform: scale(1.15);
+  }
 }
 
 /* conteúdo do card */
